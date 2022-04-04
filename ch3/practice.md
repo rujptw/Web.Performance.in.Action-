@@ -23,5 +23,12 @@
     3. 使用媒体查询、em、rem 来进行响应式设计
     4. 需要使用的meta:<meta name="viewport" content="width=device-width,initial-scale=1"> 
     5. 谷歌修改了搜索排名的机制，对手机友好的网站排行会更靠前
+    6. (使用谷歌提供的手机友好评测工具，来确保应用对手机端友好)['https://www.google.com/webmasters/tools/mobile-friendly/']
+### 提升css的性能
+    1. 在css中避免使用@import,因为@import引入的css文件不会和link标签引入的css一样，并行下载，它只会在有@import的开始下载，scss等预编译器的@import与css的@import不同。
+    2. 使用link将引入的css放入header标签内,link标签能够并行下载。
+    3. 第二点能够避免`fouc`也将是无样式闪烁问题的出现。
+    4. 使用更快的选择器:标签、class、后代选择器更快。
+    5. 使用`flexbox`布局，性能比传统布局更好，也更易写。
 
 
