@@ -30,5 +30,38 @@
     3. 第二点能够避免`fouc`也将是无样式闪烁问题的出现。
     4. 使用更快的选择器:标签、class、后代选择器更快。
     5. 使用`flexbox`布局，性能比传统布局更好，也更易写。
+### 使用transition
+    1. 为什么要用transition: 
+        1. 浏览器广泛支持。
+        2. 性能更好，因为是浏览器本身支持的。
+        3. 不需要引入额外的js或css,能帮助减少应用大小。
+    2. 语法: transition: transition-property(属性)、transition-duration（花费的时间)、 transition-timing-function(变换函数)、transition-delay(延迟的时间)
+            1. 例子: `transition:width 1s ease-out 0.5s`
+            2. 设置多个过渡:用逗号分隔每个属性过渡
+                ```
+                transition-property:width 1s ease-out 0.5s,height 1s ease-out 0.5s;
+                ```
+    3. 注意:
+            1. transition在display属性上是无效的。
+            2. transition-duration始终是要设置的，否则为0s,是无效的。
+    4. 使用`will-change`来优化transition:
+            1. 语法: `will-change:要改变的属性`,默认为auto,让浏览器自己去猜去优化
+            2. 注意:
+                    * 不要将will-change运用到太多元素上，这个会导致负优化。
+                    * 审慎使用will-change,使用脚本切换will-change属性。
+                    * 给浏览器足够的时间优化，比如将will-change属性加到父元素上
+                      ```
+                      <!-- before -->
+                        #siteHeader a:hover{
+                            will-change: background-color;
+                        }
+                     <!-- after -->
+                        #siteHeader:hover a{
+                            will-change: background-color;
+                            }
+                       ``` 
+                    * 不要过早用will-change优化,没有什么性能问题就不要用will-change了。
+            3. **原则:运用will-change是为了预测元素将要发生变化，而不是假设它将要变化**
+  
 
 
